@@ -43,13 +43,10 @@ const prompt = ref<string>('')
 const loading = ref<boolean>(false)
 const inputRef = ref<Ref | null>(null)
 
-// 添加PromptStore
 const promptStore = usePromptStore()
 
-// 使用storeToRefs，保证store修改后，联想部分能够重新渲染
 const { promptList: promptTemplate } = storeToRefs<any>(promptStore)
 
-// 未知原因刷新页面，loading 状态不会重置，手动重置
 dataSources.value.forEach((item, index) => {
   if (item.loading)
     updateChatSome(+uuid, index, { loading: false })
@@ -409,9 +406,6 @@ function handleStop() {
   }
 }
 
-// 可优化部分
-// 搜索选项计算，这里使用value作为索引项，所以当出现重复value时渲染异常(多项同时出现选中效果)
-// 理想状态下其实应该是key作为索引项,但官方的renderOption会出现问题，所以就需要value反renderLabel实现
 const searchOptions = computed(() => {
   if (prompt.value.startsWith('/')) {
     return promptTemplate.value.filter((item: { key: string }) => item.key.toLowerCase().includes(prompt.value.substring(1).toLowerCase())).map((obj: { value: any }) => {
@@ -426,7 +420,6 @@ const searchOptions = computed(() => {
   }
 })
 
-// value反渲染key
 const renderOption = (option: { label: string }) => {
   for (const i of promptTemplate.value) {
     if (i.value === option.label)
@@ -485,8 +478,7 @@ onUnmounted(() => {
         >
           <template v-if="!dataSources.length">
             <div class="flex items-center justify-center mt-4 text-center text-neutral-300">
-              <SvgIcon icon="ri:bubble-chart-fill" class="mr-2 text-3xl" />
-              <span>Aha~</span>
+              <span>Welcome - خوش آمدید</span>
             </div>
           </template>
           <template v-else>
@@ -533,7 +525,7 @@ onUnmounted(() => {
               <SvgIcon icon="ri:chat-history-line" />
             </span>
           </HoverButton>
-          <NAutoComplete v-model:value="prompt" :options="searchOptions" :render-label="renderOption">
+          <NAutoComplete v-model:value="prompt" style="direction: rtl;" :options="searchOptions" :render-label="renderOption">
             <template #default="{ handleInput, handleBlur, handleFocus }">
               <NInput
                 ref="inputRef"

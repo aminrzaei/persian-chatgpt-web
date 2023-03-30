@@ -40,24 +40,24 @@ onMounted(() => {
 
 <template>
   <NSpin :show="loading">
-    <div class="p-4 space-y-4">
+    <div class="p-4 space-y-4" style="direction: rtl">
       <h2 class="text-xl font-bold">
         Version - {{ pkg.version }}
       </h2>
       <div class="p-2 space-y-2 rounded-md bg-neutral-100 dark:bg-neutral-700">
         <p>
-          此项目开源于
+          این پروژه به صورت Open Source در
           <a
             class="text-blue-600 dark:text-blue-500"
-            href="https://github.com/Chanzhaoyu/chatgpt-web"
+            href="https://github.com/aminrzaei/ChatGPT-Web"
             target="_blank"
           >
-            Github
+            گیت هاب
           </a>
-          ，免费且基于 MIT 协议，没有任何形式的付费行为！
+          منتشر شده است و رایگان و بر اساس مجوز MIT بوده و هیچ گونه فعالیت پرداختی ندارد!
         </p>
         <p>
-          如果你觉得此项目对你有帮助，请在 Github 帮我点个 Star 或者给予一点赞助，谢谢！
+          اگر فکر می کنید این پروژه به شما کمک می کند، لطفاً در Github به من کمک کنید تا Star بگیریم یا کمی حمایت مالی کنید. با تشکر!
         </p>
       </div>
       <p>{{ $t("setting.api") }}：{{ config?.apiModel ?? '-' }}</p>

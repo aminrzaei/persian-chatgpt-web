@@ -41,3 +41,9 @@ const NaiveProviderContent = defineComponent({
     </NDialogProvider>
   </NLoadingBarProvider>
 </template>
+
+<style>
+.n-dialog{
+ direction: rtl;
+}
+</style>

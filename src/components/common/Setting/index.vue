@@ -37,7 +37,7 @@ const show = computed({
 
 <template>
   <NModal v-model:show="show" :auto-focus="false" preset="card" style="width: 95%; max-width: 640px">
-    <div>
+    <div style="direction: rtl">
       <NTabs v-model:value="active" type="line" animated>
         <NTabPane name="General" tab="General">
           <template #tab>
@@ -68,3 +68,9 @@ const show = computed({
     </div>
   </NModal>
 </template>
+
+<style>
+.n-tabs-bar{
+display: none;
+}
+</style>
