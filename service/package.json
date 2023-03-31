@@ -2,10 +2,11 @@
   "name": "chatgpt-web-service",
   "version": "1.0.0",
   "private": false,
-  "description": "ChatGPT Web Service",
+  "description": "Pesrian ChatGPT Web Service",
   "author": "Amin Rezaei <aminrezaei@proton.me>",
   "keywords": [
-    "chatgpt-web",
+    "persian-chatgpt-web",
+		"persian-chatgpt",
     "chatgpt",
     "chatbot",
     "express"
